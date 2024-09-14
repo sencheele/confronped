@@ -1,0 +1,260 @@
+@media (max-width: 1600px) {
+  .section-offset:last-child {
+    padding-bottom: 80px;
+  }
+
+  /* first */
+  .first__wrapper {
+    gap: 10px;
+  }
+
+  .first__inform {
+    flex: 1 1 60%;
+    padding: 50px 0;
+    min-height: auto;
+  }
+
+  .first__bg {
+    flex: 1 1 40%;
+  }
+
+  /* worlds */
+  .interesting__bg {
+    flex: 0 1 35%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../img/vr-worlds1.jpg");
+  }
+
+  .interesting__inform {
+    padding: 30px;
+    flex: 1 1 65%;
+  }
+}
+
+@media (max-width: 1200px) {
+  /* first */
+  .main-title {
+    margin: 0;
+  }
+
+  .first__wrapper {
+    margin-bottom: 50px;
+  }
+
+  .first__inform {
+    flex: 1 1 50%;
+  }
+
+  .first__bg {
+    flex: 1 1 50%;
+    background-position: right;
+  }
+
+  .first__descr_1920 {
+    display: none;
+  }
+
+  .first__descr_1200 {
+    display: block;
+  }
+
+  /* popular */
+  .popular__list {
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .popular__item {
+    width: calc((100% - 40px * 2) / 3);
+    font-size: 30px;
+  }
+
+  /* worlds */
+  .interesting__item {
+    flex: 1 1 100%;
+  }
+
+  .interesting__bg {
+    flex: 0 1 25%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .main-title {
+    max-width: 400px;
+    font-size: 46px;
+    line-height: 56px;
+  }
+
+  .first__wrapper {
+    margin-bottom: 40px;
+    height: 300px;
+  }
+
+  .first__inform {
+    flex: 1 1 60%;
+    padding: 30px 0;
+  }
+
+  /* popular */
+  .popular__item {
+    width: calc((100% - 40px * 1) / 2);
+  }
+}
+
+@media (max-width: 767px) {
+  .section-offset:last-child {
+    padding-bottom: 60px;
+  }
+
+  .main-title {
+    font-size: 30px;
+    line-height: 42px;
+  }
+
+  .first__wrapper {
+    height: 200px;
+    margin-bottom: 20px;
+  }
+
+  .first__inform {
+    padding: 10px 0;
+  }
+
+  .first__descr {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  /* popular */
+  .popular__list {
+    gap: 20px;
+  }
+
+  .popular__item {
+    border-radius: 16px;
+  }
+
+  .popular__hover {
+    font-size: 24px;
+  }
+
+  /* articles */
+  .articles__title {
+    font-size: 20px;
+  }
+
+  .articles__descr {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .articles__link {
+    font-size: 16px;
+  }
+
+  .interesting__item {
+    min-height: auto;
+    border-radius: 16px;
+  }
+
+  .interesting__inform {
+    padding: 20px;
+  }
+
+  .interesting__price {
+    font-size: 16px;
+  }
+
+  .interesting__title {
+    font-size: 20px;
+  }
+
+  .interesting__descr {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .interesting__link {
+    padding: 12px 24px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 479px) {
+  .section-offset:last-child {
+    padding-bottom: 40px;
+  }
+
+  .first__wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .first__bg {
+    min-height: 240px;
+    background-position: left;
+  }
+
+  .first__descr {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  /* popular */
+  .popular__item {
+    width: 100%;
+  }
+
+  /* articles */
+  .articles__title {
+    font-size: 18px;
+  }
+
+  .articles__descr {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .articles__link {
+    font-size: 14px;
+  }
+
+  .interesting__list {
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .interesting__item {
+    flex-direction: column;
+  }
+
+  .interesting__bg {
+    flex: none;
+    height: 100px;
+  }
+
+  .interesting__inform {
+    flex: none;
+  }
+
+  .interesting__title {
+    font-size: 20px;
+  }
+
+  .interesting__descr {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .interesting__link {
+    padding: 12px 24px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+}

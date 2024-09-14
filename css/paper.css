@@ -1,0 +1,192 @@
+/* first */
+.first__wrapper {
+  gap: 40px;
+}
+
+.first__inform {
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 800px;
+  min-height: 660px;
+}
+
+.first__descr_1200 {
+  display: none;
+}
+
+.first__descr {
+  margin: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 36px;
+}
+
+.first__descr:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.first__bg {
+  flex: 1 1 800px;
+  background-image: url("../img/solarsystem-first-bg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+}
+
+.first__bg_mercury {
+  background-image: url("../img/mercury-bg.png");
+}
+
+.first__bg_detection {
+  background-image: url("../img/detection-bg.png");
+}
+
+.first__bg_falling {
+  background-image: url("../img/falling-bg.png");
+}
+
+.first__bg_black-hole {
+  background-image: url("../img/black-hole-bg.png");
+}
+
+.first__bg_types {
+  background-image: url("../img/types-bg.png");
+}
+
+.first__bg_weather {
+  background-image: url("../img/weather-bg.png");
+}
+
+.first__bg_radiation {
+  background-image: url("../img/radiation-bg.png");
+}
+
+.first__bg_flare {
+  background-image: url("../img/flare-bg.png");
+}
+
+.first__bg_about {
+  background-image: url("../img/about-bg.png");
+}
+
+.first__bg_dipper {
+  background-image: url("../img/dipper-bg.png");
+}
+
+.first__bg_zodiac {
+  background-image: url("../img/zodiac-bg.png");
+}
+
+/* content */
+.content__list {
+  max-width: 1080px;
+  padding: 50px;
+  border-radius: 30px;
+  border: 1px solid #cacaca;
+}
+
+.content__item {
+  font-weight: 600;
+  font-size: 24px;
+  color: #6843b0;
+  text-decoration: underline;
+}
+
+.content__item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.content__link {
+  transition: color 0.3s ease;
+}
+
+.content__link:focus {
+  outline: none;
+}
+
+.content__link:focus-visible {
+  border: 2px solid #280075;
+  border-radius: 2px;
+}
+
+.content__link:hover {
+  color: #aa7eff;
+}
+
+.content__link:active {
+  color: #280075;
+}
+
+/* section */
+.section__title, .section__descr, .facts__list {
+  max-width: 1080px;
+}
+
+.section__descr {
+  margin: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 36px;
+}
+
+.section__descr:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.section__figure {
+  margin: 0;
+}
+
+.section__figure:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.section__img {
+  max-width: 1080px;
+}
+
+.section__descrimg{
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #cacaca;
+}
+
+.section__link {
+  word-wrap: break-word;
+}
+
+/* facts */
+.sources {
+  padding-bottom: 100px;
+}
+
+.facts__list {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 36px;
+}
+
+.facts__item {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.facts__item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.facts__bg {
+  flex: 0 0 40px;
+  height: 40px;
+  background-image: url("../img/facts.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.facts__inform {
+  margin: 0;
+}

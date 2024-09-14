@@ -1,0 +1,189 @@
+@media (max-width: 1600px) {
+  /* first */
+  .first__wrapper {
+    gap: 0;
+  }
+
+  .first__inform {
+    flex: 1 1 60%;
+    padding: 50px 0;
+    min-height: auto;
+  }
+
+  .first__bg {
+    flex: 1 1 40%;
+  }
+
+  /* worlds */
+  .worlds__bg {
+    flex: 0 1 35%;
+  }
+
+  .worlds__inform {
+    padding: 30px;
+    flex: 1 1 65%;
+  }
+}
+
+@media (max-width: 1200px) {
+  /* first */
+  .main-title {
+    margin: 0;
+  }
+
+  .first__wrapper {
+    margin-bottom: 50px;
+  }
+
+  .first__inform {
+    flex: 1 1 50%;
+  }
+
+  .first__bg {
+    flex: 1 1 50%;
+    background-position: right;
+  }
+
+  .first__descr_1920 {
+    display: none;
+  }
+
+  .first__descr_1200 {
+    display: block;
+  }
+
+  /* worlds */
+  .worlds__item {
+    flex: 1 1 100%;
+  }
+
+  .worlds__bg {
+    flex: 0 1 25%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .main-title {
+    font-size: 46px;
+    line-height: 56px;
+  }
+
+  .first__wrapper {
+    margin-bottom: 40px;
+  }
+
+  .first__inform {
+    flex: 1 1 60%;
+    padding: 30px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-title {
+    font-size: 30px;
+    line-height: 42px;
+    margin-bottom: 20px;
+  }
+
+  .first__wrapper {
+    margin-bottom: 20px;
+  }
+
+  .first__inform {
+    padding: 10px 0;
+  }
+
+  .first__descr {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .worlds__item {
+    min-height: auto;
+    border-radius: 16px;
+  }
+
+  .worlds__inform {
+    padding: 20px;
+  }
+
+  .worlds__price {
+    font-size: 16px;
+  }
+
+  .worlds__title {
+    font-size: 20px;
+  }
+
+  .worlds__descr {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .worlds__link {
+    padding: 12px 24px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  .worlds__notice {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+@media (max-width: 479px) {
+  .first__wrapper {
+    flex-direction: column;
+  }
+
+  .first__bg {
+    min-height: 240px;
+    background-position: left;
+  }
+
+  .first__descr {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .worlds__list {
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .worlds__item {
+    flex-direction: column;
+  }
+
+  .worlds__bg {
+    flex: none;
+    height: 100px;
+  }
+
+  .worlds__inform {
+    flex: none;
+  }
+
+  .worlds__title {
+    font-size: 20px;
+  }
+
+  .worlds__descr {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .worlds__link {
+    padding: 12px 24px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  .worlds__notice {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}

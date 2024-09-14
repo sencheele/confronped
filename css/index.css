@@ -1,0 +1,271 @@
+/* first */
+.first {
+  height: calc(100vh - 95px);
+}
+
+.first__wrapper {
+  height: calc(100vh - 95px - 50px * 2);
+  padding-left: 8%;
+  padding-right: 50px;
+  border-radius: 30px;
+  background-image: url("../img/first-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+}
+
+.first__inform {
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 45%;
+}
+
+.first__descr {
+  margin: 0;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 33px;
+}
+
+.first__bg {
+  flex: 1 1 55%;
+  background-image: url("../img/first-human.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: right;
+  background-position-y: bottom;
+}
+
+/* about-vr */
+.about-vr__wrapper {
+  gap: 100px;
+}
+
+.about-vr__left {
+  flex: 1 2 980px;
+}
+
+.about-vr__right {
+  flex: 1 1 560px;
+  border-radius: 30px;
+  background-image: url("../img/about-vr-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.about-vr__descr {
+  max-width: 980px;
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.about-vr__descr:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+/* advantages */
+.section__title_adv {
+  max-width: 812px;
+}
+
+.advantages__list {
+  gap: 40px;
+}
+
+.advantages__item {
+  flex: 1 1 calc((100% - 40px * 2) / 3);
+  padding: 40px;
+  border-radius: 30px;
+  text-align: center;
+  border: 1px solid #cacaca;
+}
+
+.advantages__icon {
+  margin-bottom: 20px;
+}
+
+.advantages__title {
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31px;
+}
+
+.advantages__descr {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+/* vr */
+.vr {
+  height: 100vh;
+}
+
+.vr__container {
+  height: 100%;
+}
+
+.vr__wrapper {
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-radius: 30px;
+  background-image: url("../img/vr-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.section__title_vr {
+  max-width: 793px;
+  align-self: center;
+  text-align: center;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 58px;
+  color: #fff;
+}
+
+.vr__link {
+  position: absolute;
+  bottom: 11%;
+  padding: 20px 40px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #6843b0;
+  background-color: #fff;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+
+.vr__link:focus {
+  outline: none;
+}
+
+.vr__link:focus-visible {
+  outline-offset: -1px;
+  outline: 3px solid #6843b0;
+}
+
+.vr__link:hover {
+  color: #fff;
+  background-color: #6843b0;
+  border: none;
+}
+
+.vr__link:active {
+  color: #fff;
+  background-color: #280075;
+  border: none;
+}
+
+
+
+/* articles */
+.articles {
+  padding-bottom: 100px;
+}
+
+.articles__list {
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.articles__item {
+  flex: 1 1 calc((100% - 40px) / 2);
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid #cacaca;
+}
+
+.articles__inform {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 45px;
+}
+
+.articles__title {
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 31px;
+}
+
+.articles__descr {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.articles__link {
+  padding: 15px 30px;
+  border-radius: 12px;
+  border: 2px solid #6843b0;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #6843b0;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+
+
+.articles__link:focus {
+  outline: none;
+}
+
+.articles__link:focus-visible {
+  border: 3px solid #280075;
+}
+
+.articles__link:hover {
+  color: #fff;
+  background-color: #6843b0;
+  border-color: #6843b0;
+}
+
+.articles__link:active {
+  color: #fff;
+  background-color: #280075;
+  border-color: #280075;
+}
+
+
+
+.articles__bg {
+  flex: 0 0 33%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.articles__bg_1 {
+  background-image: url("../img/articles1.png");
+}
+
+.articles__bg_2 {
+  background-image: url("../img/articles2.png");
+}
+
+.articles__bg_3 {
+  background-image: url("../img/articles3.png");
+}
+
+.articles__bg_4 {
+  background-image: url("../img/articles4.png");
+}
+
+

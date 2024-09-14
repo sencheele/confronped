@@ -1,0 +1,152 @@
+/* personal-data */
+.personal-data__wrapper {
+  gap: 80px;
+}
+
+.personal-data__avatar {
+  align-self: center;
+  width: 33%;
+}
+
+.personal-data__information {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.personal-data__name {
+  margin-bottom: 5px;
+  font-weight: 800;
+  font-size: 70px;
+}
+
+.personal-data__surname {
+  margin-bottom: 30px;
+  font-weight: 800;
+  font-size: 70px;
+}
+
+.personal-data__email {
+  margin-bottom: 15px;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.personal-data__phone {
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.personal-data__button {
+  align-self: flex-start;
+  padding: 15px 30px;
+  border-radius: 12px;
+  border: 2px solid #6843b0;
+  font-weight: 700;
+  font-size: 16px;
+  color: #6843b0;
+  transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.personal-data__button:focus {
+  outline: none;
+}
+
+.personal-data__button:focus-visible {
+  border: 3px solid #280075;
+}
+
+.personal-data__button:hover {
+  color: #fff;
+  background-color: #6843b0;
+  border-color: #6843b0;
+}
+
+.personal-data__button:active {
+  color: #fff;
+  background-color: #280075;
+  border-color: #280075;
+}
+
+/* interesting */
+.interesting__list {
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.interesting__item {
+  width: calc((100% - 40px) / 2);
+  min-height: 306px;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid #cacaca;
+}
+
+.interesting__bg {
+  flex: 0 1 38%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url("../img/vr-worlds1.jpg");
+}
+
+.interesting__inform {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1 1 62%;
+  padding: 40px;
+}
+
+.interesting__price {
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #10c600;
+  ;
+}
+
+.interesting__title {
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.interesting__descr {
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.interesting__link {
+  padding: 15px 30px;
+  border-radius: 12px;
+  border: 2px solid #6843b0;
+  font-weight: 700;
+  font-size: 16px;
+  color: #6843b0;
+  transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.interesting__link:focus {
+  outline: none;
+}
+
+.interesting__link:focus-visible {
+  border: 3px solid #280075;
+}
+
+.interesting__link:hover {
+  color: #fff;
+  background-color: #6843b0;
+  border-color: #6843b0;
+}
+
+.interesting__link:active {
+  color: #fff;
+  background-color: #280075;
+  border-color: #280075;
+}
