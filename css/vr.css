@@ -1,0 +1,131 @@
+/* first */
+.first__wrapper {
+  gap: 40px;
+}
+
+.first__inform {
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 1 800px;
+  min-height: 660px;
+}
+
+.first__descr_1200 {
+  display: none;
+}
+
+.first__descr {
+  margin: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 36px;
+}
+
+.first__descr:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.first__bg {
+  flex: 1 1 800px;
+  background-image: url("../img/vr-first.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+/* worlds */
+.worlds__list {
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.worlds__item {
+  flex: 1 1 calc((100% - 40px) / 2);
+  min-height: 306px;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid #cacaca;
+}
+
+.worlds__bg {
+  flex: 0 1 38%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.worlds__bg_1 {
+  background-image: url("../img/vr-worlds2.jpg");
+}
+
+.worlds__bg_2 {
+  background-image: url("../img/vr-worlds1.jpg");
+}
+
+.worlds__inform {
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1 1 62%;
+  padding: 40px;
+}
+
+.worlds__price {
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #10c600;
+  ;
+}
+
+.worlds__title {
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.worlds__descr {
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.worlds__link {
+  padding: 15px 30px;
+  border-radius: 12px;
+  border: 2px solid #6843b0;
+  font-weight: 700;
+  font-size: 16px;
+  color: #6843b0;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.worlds__link:focus {
+  outline: none;
+}
+
+.worlds__link:focus-visible {
+  border: 3px solid #280075;
+}
+
+.worlds__link:hover {
+  color: #fff;
+  background-color: #6843b0;
+  border-color: #6843b0;
+}
+
+.worlds__link:active {
+  color: #fff;
+  background-color: #280075;
+  border-color: #280075;
+}
+
+.worlds__notice {
+  max-width: 940px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 36px;
+}
