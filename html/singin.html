@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/sing.css">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <!-- <link rel="stylesheet" href="../css/media.css"> -->
+  <!-- <link rel="stylesheet" href="../css/media_account.css"> -->
+  <title>Confronped</title>
+</head>
+<body>
+  <main class="main flex">
+    <div class="container flex">
+      <h1 class="main-title">
+        Авторизация
+      </h1>
+      <form class="form flex" action="" method="post">
+        <label for="login" class="label form__label">
+          Логин
+        </label>
+        <input class="form__input" type="email" name="email" id="login">
+        <label for="password" class="label form__label">
+          Пароль
+        </label>
+        <input class="form__input" type="password" name="password" id="password">
+        <label class="label form__label">
+          <input class="form__checkbox" type="checkbox" name="remember-password">
+          <span class="form__fake-chackbox"></span>
+          <span class="form__text">
+            Запомнить пароль
+          </span>
+        </label>
+        <a href="#" class="btn btn-reset form__button">
+          Войти
+        </a>
+      </form>
+      <span class="text">
+        Нет учётной записи?
+        <a href="singup.html" class="link">
+          Зарегистрироваться
+        </a>
+      </span>
+    </div>
+  </main>
+  <script src="../script/index.js"></script>
+</body>
+</html>
