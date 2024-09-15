@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <title>Солнечная система</title>
+</head>
+<body>
+  <a-scene>
+    <a-assets>
+      <a-asset-item id="sun" src="objects/sun.glb"></a-asset-item>
+      <a-asset-item id="mercury" src="objects/mercury.glb"></a-asset-item>
+      <a-asset-item id="venus" src="objects/venus.glb"></a-asset-item>
+      <a-asset-item id="earth" src="objects/earth.glb"></a-asset-item>
+      <a-asset-item id="moon" src="objects/moon.glb"></a-asset-item>
+      <a-asset-item id="mars" src="objects/mars.glb"></a-asset-item>
+      <a-asset-item id="jupiter" src="objects/jupiter.glb"></a-asset-item>
+      <a-asset-item id="saturn" src="objects/saturn.glb"></a-asset-item>
+      <a-asset-item id="uranus" src="objects/uranus.glb"></a-asset-item>
+      <a-asset-item id="neptune" src="objects/neptune.glb"></a-asset-item>
+    </a-assets>
+    <!-- Аудио -->
+    <audio class="Audio_Sun audio" src="audio/sun.mp3"></audio>
+    <audio class="Audio_Mercury audio" src="audio/mercury.mp3"></audio>
+    <audio class="Audio_Venus audio" src="audio/venus.mp3"></audio>
+    <audio class="Audio_Earth audio" src="audio/earth.mp3"></audio>
+    <audio class="Audio_Mars audio" src="audio/mars.mp3"></audio>
+    <audio class="Audio_Jupiter audio" src="audio/jupiter.mp3"></audio>
+    <audio class="Audio_Saturn audio" src="audio/saturn.mp3"></audio>
+    <audio class="Audio_Uranus audio" src="audio/uranus.mp3"></audio>
+    <audio class="Audio_Neptune audio" src="audio/neptune.mp3"></audio>
+
+    <!-- Элементы управления -->
+    <a-entity class="rig__Start" position="0 400 0" rotation="-90 0 0">
+      <a-entity>
+        <!-- Пол -->
+        <a-box position="0 0 0" scale="2 0.2 2" color="gray"></a-box>
+        <!-- Настройки -->
+        <a-plane  class="Frame_Choose_Mode__Start"
+                  visible="true"
+                  material="src:interface/frame-mode.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Text__Start"
+                  material="src:interface/btn-text.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="1.2 1.25 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Audio__Start"
+                  material="src:interface/btn-audio.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="0.1 1.25 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Выбор объектов -->
+        <a-plane  class="Frame_Choose_Object__Start"
+                  visible="false"
+                  material="src:interface/frame-object.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="btn_setting_choose_object__Start"
+                  material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                  width="0.4"
+                  height="0.4"
+                  position="-2 2.7 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Sun__Start"
+                  material="src:interface/btn-sun.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="1.6 2.35 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Mercury__Start"
+                  material="src:interface/btn-mercury.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="0.5 2.35 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Venus__Start"
+                  material="src:interface/btn-venus.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="-0.6 2.35 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Earth__Start"
+                  material="src:interface/btn-earth.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="1.6 1.85 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Mars__Start"
+                  material="src:interface/btn-mars.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="0.5 1.85 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Jupiter__Start"
+                  material="src:interface/btn-jupiter.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="-0.6 1.85 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Saturn__Start"
+                  material="src:interface/btn-saturn.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="1.6 1.35 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Uranus__Start"
+                  material="src:interface/btn-uranus.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="0.5 1.35 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Neptune__Start"
+                  material="src:interface/btn-neptune.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="-0.6 1.35 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Above__Start"
+                  material="src:interface/btn-above.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="1.6 0.55 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Side__Start"
+                  material="src:interface/btn-side.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="0.5 0.55 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Angle__Start"
+                  material="src:interface/btn-angle.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="-0.6 0.55 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Информация об объекте -->
+        <!-- Солнце -->
+        <a-plane  class="obj__Start Frame_Sun__Start"
+                  visible="false"
+                  material="src:interface/frame-sun.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Меркурий -->
+        <a-plane  class="obj__Start Frame_Mercury__Start"
+                  visible="false"
+                  material="src:interface/frame-mercury.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Венера -->
+        <a-plane  class="obj__Start Frame_Venus__Start"
+                  visible="false"
+                  material="src:interface/frame-venus.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Земля -->
+        <a-plane  class="obj__Start Frame_Earth__Start"
+                  visible="false"
+                  material="src:interface/frame-earth.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Марс -->
+        <a-plane  class="obj__Start Frame_Mars__Start"
+                  visible="false"
+                  material="src:interface/frame-mars.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Юпитер -->
+        <a-plane  class="obj__Start Frame_Jupiter__Start"
+                  visible="false"
+                  material="src:interface/frame-jupiter.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Сатурн -->
+        <a-plane  class="obj__Start Frame_Saturn__Start"
+                  visible="false"
+                  material="src:interface/frame-saturn.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Уран -->
+        <a-plane  class="obj__Start Frame_Uranus__Start"
+                  visible="false"
+                  material="src:interface/frame-uranus.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Нептун -->
+        <a-plane  class="obj__Start Frame_Neptune__Start"
+                  visible="false"
+                  material="src:interface/frame-neptune.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Кнопки назад и настройки -->
+        <a-plane  class="btn_back__Start"
+                  material="src:interface/btn-back.png; transparent:true; alphaTest:0.1;"
+                  width="0.4"
+                  height="0.4"
+                  position="-1.5 2.7 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="btn_setting_obj__Start"
+                  material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                  width="0.4"
+                  height="0.4"
+                  position="-2 2.7 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+      </a-entity>
+      <!-- Камера -->
+      <a-entity position="0 0 0">
+        <a-camera class="Camera_Rig__Start" camera="active: true">
+          <a-cursor></a-cursor>
+        </a-camera>
+      </a-entity>
+    </a-entity>
+    <!-- Солнечная система -->
+    <!-- Солнце -->
+    <a-entity gltf-model="#sun"
+              position="0 0 0"
+              scale="1 1 1"
+              animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 10000">
+    </a-entity>
+    <a-entity class="rig__Sun" position="0 0 70" rotation="0 0 0">
+      <a-entity>
+        <!-- Пол -->
+        <a-box position="0 0 0" scale="2 0.2 2" color="gray"></a-box>
+        <!-- Настройки -->
+        <a-plane  class="Frame_Choose_Mode__Sun"
+                  visible="false"
+                  material="src:interface/frame-mode.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Text__Sun"
+                  material="src:interface/btn-text.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="1.2 1.25 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Audio__Sun"
+                  material="src:interface/btn-audio.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="0.1 1.25 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Выбор объектов -->
+        <a-plane  class="Frame_Choose_Object__Sun"
+                  visible="false"
+                  material="src:interface/frame-object.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="btn_setting_choose_object__Sun"
+                  material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                  width="0.4"
+                  height="0.4"
+                  position="-2 2.7 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Sun__Sun"
+                  material="src:interface/btn-sun.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="1.6 2.35 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Mercury__Sun"
+                  material="src:interface/btn-mercury.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="0.5 2.35 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Venus__Sun"
+                  material="src:interface/btn-venus.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="-0.6 2.35 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Earth__Sun"
+                  material="src:interface/btn-earth.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="1.6 1.85 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Mars__Sun"
+                  material="src:interface/btn-mars.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="0.5 1.85 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Jupiter__Sun"
+                  material="src:interface/btn-jupiter.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="-0.6 1.85 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Saturn__Sun"
+                  material="src:interface/btn-saturn.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="1.6 1.35 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Uranus__Sun"
+                  material="src:interface/btn-uranus.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="0.5 1.35 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Neptune__Sun"
+                  material="src:interface/btn-neptune.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="-0.6 1.35 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Above__Sun"
+                  material="src:interface/btn-above.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="1.6 0.55 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Side__Sun"
+                  material="src:interface/btn-side.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="0.5 0.55 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="Button_Angle__Sun"
+                  material="src:interface/btn-angle.png; transparent:true; alphaTest:0.1;"
+                  width="1"
+                  height="0.4"
+                  position="-0.6 0.55 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Информация об объекте -->
+        <!-- Солнце -->
+        <a-plane  class="obj__Sun Frame_Sun__Sun"
+                  visible="false"
+                  material="src:interface/frame-sun.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Меркурий -->
+        <a-plane  class="obj__Sun Frame_Mercury__Sun"
+                  visible="false"
+                  material="src:interface/frame-mercury.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Венера -->
+        <a-plane  class="obj__Sun Frame_Venus__Sun"
+                  visible="false"
+                  material="src:interface/frame-venus.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Земля -->
+        <a-plane  class="obj__Sun Frame_Earth__Sun"
+                  visible="false"
+                  material="src:interface/frame-earth.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Марс -->
+        <a-plane  class="obj__Sun Frame_Mars__Sun"
+                  visible="false"
+                  material="src:interface/frame-mars.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Юпитер -->
+        <a-plane  class="obj__Sun Frame_Jupiter__Sun"
+                  visible="false"
+                  material="src:interface/frame-jupiter.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Сатурн -->
+        <a-plane  class="obj__Sun Frame_Saturn__Sun"
+                  visible="false"
+                  material="src:interface/frame-saturn.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Уран -->
+        <a-plane  class="obj__Sun Frame_Uranus__Sun"
+                  visible="false"
+                  material="src:interface/frame-uranus.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Нептун -->
+        <a-plane  class="obj__Sun Frame_Neptune__Sun"
+                  visible="false"
+                  material="src:interface/frame-neptune.png; transparent:true; alphaTest:0.1;"
+                  width="5.3"
+                  height="3"
+                  position="0 1.6 2"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <!-- Кнопки назад и настройки -->
+        <a-plane  class="btn_back__Sun"
+                  material="src:interface/btn-back.png; transparent:true; alphaTest:0.1;"
+                  width="0.4"
+                  height="0.4"
+                  position="-1.5 2.7 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+        <a-plane  class="btn_setting_obj__Sun"
+                  material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                  width="0.4"
+                  height="0.4"
+                  position="-2 2.7 1.99"
+                  rotation="-180 0 -180">
+        </a-plane>
+      </a-entity>
+      <!-- Камера -->
+      <a-entity position="0 0 0">
+        <a-camera class="Camera_Rig__Sun" camera="active: false">
+          <a-cursor></a-cursor>
+        </a-camera>
+      </a-entity>
+    </a-entity>
+
+    <!-- Меркурий -->
+    <a-entity animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 5000">
+      <a-entity position="80 0 0">
+        <a-entity gltf-model="#mercury"
+                  scale="13 13 13"
+                  animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 7540">
+        </a-entity>
+        <a-entity class="rig__Mercury" position="0 0 10" rotation="0 0 0" visible="false">
+          <a-entity>
+            <!-- Пол -->
+            <a-box position="0 0 0" scale="2 0.2 2" color="gray"></a-box>
+            <!-- Настройки -->
+            <a-plane  class="Frame_Choose_Mode__Mercury"
+                      visible="false"
+                      material="src:interface/frame-mode.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Text__Mercury"
+                      material="src:interface/btn-text.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.2 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Audio__Mercury"
+                      material="src:interface/btn-audio.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.1 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Выбор объектов -->
+            <a-plane  class="Frame_Choose_Object__Mercury"
+                      visible="false"
+                      material="src:interface/frame-object.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_choose_object__Mercury"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Sun__Mercury"
+                      material="src:interface/btn-sun.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mercury__Mercury"
+                      material="src:interface/btn-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Venus__Mercury"
+                      material="src:interface/btn-venus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Earth__Mercury"
+                      material="src:interface/btn-earth.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mars__Mercury"
+                      material="src:interface/btn-mars.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Jupiter__Mercury"
+                      material="src:interface/btn-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Saturn__Mercury"
+                      material="src:interface/btn-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Uranus__Mercury"
+                      material="src:interface/btn-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Neptune__Mercury"
+                      material="src:interface/btn-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Above__Mercury"
+                      material="src:interface/btn-above.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Side__Mercury"
+                      material="src:interface/btn-side.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Angle__Mercury"
+                      material="src:interface/btn-angle.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Информация об объекте -->
+            <!-- Солнце -->
+            <a-plane  class="obj__Mercury Frame_Sun__Mercury"
+                      visible="false"
+                      material="src:interface/frame-sun.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Меркурий -->
+            <a-plane  class="obj__Mercury Frame_Mercury__Mercury"
+                      visible="false"
+                      material="src:interface/frame-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Венера -->
+            <a-plane  class="obj__Mercury Frame_Venus__Mercury"
+                      visible="false"
+                      material="src:interface/frame-venus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Земля -->
+            <a-plane  class="obj__Mercury Frame_Earth__Mercury"
+                      visible="false"
+                      material="src:interface/frame-earth.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Марс -->
+            <a-plane  class="obj__Mercury Frame_Mars__Mercury"
+                      visible="false"
+                      material="src:interface/frame-mars.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Юпитер -->
+            <a-plane  class="obj__Mercury Frame_Jupiter__Mercury"
+                      visible="false"
+                      material="src:interface/frame-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Сатурн -->
+            <a-plane  class="obj__Mercury Frame_Saturn__Mercury"
+                      visible="false"
+                      material="src:interface/frame-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Уран -->
+            <a-plane  class="obj__Mercury Frame_Uranus__Mercury"
+                      visible="false"
+                      material="src:interface/frame-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Нептун -->
+            <a-plane  class="obj__Mercury Frame_Neptune__Mercury"
+                      visible="false"
+                      material="src:interface/frame-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Кнопки назад и настройки -->
+            <a-plane  class="btn_back__Mercury"
+                      material="src:interface/btn-back.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-1.5 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_obj__Mercury"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+          </a-entity>
+          <!-- Камера -->
+          <a-entity position="0 0 0">
+            <a-camera class="Camera_Rig__Mercury" camera="active: false">
+              <a-cursor></a-cursor>
+            </a-camera>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+    </a-entity>
+
+    <!-- Венера -->
+    <a-entity animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 6761">
+      <a-entity position="120 0 0">
+        <a-entity gltf-model="#venus"
+                  scale="7 7 7"
+                  animation="property: rotation.y; to: -360; loop: true; easing: linear; dur: 31590">
+        </a-entity>
+        <a-entity class="rig__Venus" position="0 0 15" rotation="0 0 0">
+          <a-entity>
+            <!-- Пол -->
+            <a-box position="0 0 0" scale="2 0.2 2" color="gray"></a-box>
+            <!-- Настройки -->
+            <a-plane  class="Frame_Choose_Mode__Venus"
+                      visible="true"
+                      material="src:interface/frame-mode.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Text__Venus"
+                      material="src:interface/btn-text.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.2 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Audio__Venus"
+                      material="src:interface/btn-audio.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.1 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Выбор объектов -->
+            <a-plane  class="Frame_Choose_Object__Venus"
+                      visible="false"
+                      material="src:interface/frame-object.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_choose_object__Venus"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Sun__Venus"
+                      material="src:interface/btn-sun.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mercury__Venus"
+                      material="src:interface/btn-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Venus__Venus"
+                      material="src:interface/btn-venus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Earth__Venus"
+                      material="src:interface/btn-earth.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mars__Venus"
+                      material="src:interface/btn-mars.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Jupiter__Venus"
+                      material="src:interface/btn-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Saturn__Venus"
+                      material="src:interface/btn-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Uranus__Venus"
+                      material="src:interface/btn-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Neptune__Venus"
+                      material="src:interface/btn-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Above__Venus"
+                      material="src:interface/btn-above.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Side__Venus"
+                      material="src:interface/btn-side.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Angle__Venus"
+                      material="src:interface/btn-angle.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Информация об объекте -->
+            <!-- Солнце -->
+            <a-plane  class="obj__Venus Frame_Sun__Venus"
+                      visible="false"
+                      material="src:interface/frame-sun.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Меркурий -->
+            <a-plane  class="obj__Venus Frame_Mercury__Venus"
+                      visible="false"
+                      material="src:interface/frame-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Венера -->
+            <a-plane  class="obj__Venus Frame_Venus__Venus"
+                      visible="false"
+                      material="src:interface/frame-venus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Земля -->
+            <a-plane  class="obj__Venus Frame_Earth__Venus"
+                      visible="false"
+                      material="src:interface/frame-earth.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Марс -->
+            <a-plane  class="obj__Venus Frame_Mars__Venus"
+                      visible="false"
+                      material="src:interface/frame-mars.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Юпитер -->
+            <a-plane  class="obj__Venus Frame_Jupiter__Venus"
+                      visible="false"
+                      material="src:interface/frame-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Сатурн -->
+            <a-plane  class="obj__Venus Frame_Saturn__Venus"
+                      visible="false"
+                      material="src:interface/frame-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Уран -->
+            <a-plane  class="obj__Venus Frame_Uranus__Venus"
+                      visible="false"
+                      material="src:interface/frame-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Нептун -->
+            <a-plane  class="obj__Venus Frame_Neptune__Venus"
+                      visible="false"
+                      material="src:interface/frame-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Кнопки назад и настройки -->
+            <a-plane  class="btn_back__Venus"
+                      material="src:interface/btn-back.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-1.5 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_obj__Venus"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+          </a-entity>
+          <!-- Камера -->
+          <a-entity position="0 0 0">
+            <a-camera class="Camera_Rig__Venus" camera="active: true">
+              <a-cursor></a-cursor>
+            </a-camera>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+    </a-entity>
+
+    <!-- Земля -->
+    <a-entity animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 7951">
+      <a-entity position="170 0 0">
+        <a-entity gltf-model="#earth"
+                  scale="10 10 10"
+                  animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 40450">
+        </a-entity>
+        <a-entity class="rig__Earth" position="0 0 20" rotation="0 0 0">
+          <a-entity>
+            <!-- Пол -->
+            <a-box position="0 0 0" scale="2 0.2 2" color="gray"></a-box>
+            <!-- Настройки -->
+            <a-plane  class="Frame_Choose_Mode__Earth"
+                      visible="true"
+                      material="src:interface/frame-mode.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Text__Earth"
+                      material="src:interface/btn-text.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.2 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Audio__Earth"
+                      material="src:interface/btn-audio.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.1 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Выбор объектов -->
+            <a-plane  class="Frame_Choose_Object__Earth"
+                      visible="false"
+                      material="src:interface/frame-object.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_choose_object__Earth"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Sun__Earth"
+                      material="src:interface/btn-sun.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mercury__Earth"
+                      material="src:interface/btn-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Venus__Earth"
+                      material="src:interface/btn-venus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Earth__Earth"
+                      material="src:interface/btn-earth.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mars__Earth"
+                      material="src:interface/btn-mars.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Jupiter__Earth"
+                      material="src:interface/btn-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Saturn__Earth"
+                      material="src:interface/btn-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Uranus__Earth"
+                      material="src:interface/btn-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Neptune__Earth"
+                      material="src:interface/btn-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Above__Earth"
+                      material="src:interface/btn-above.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Side__Earth"
+                      material="src:interface/btn-side.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Angle__Earth"
+                      material="src:interface/btn-angle.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Информация об объекте -->
+            <!-- Солнце -->
+            <a-plane  class="obj__Earth Frame_Sun__Earth"
+                      visible="false"
+                      material="src:interface/frame-sun.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Меркурий -->
+            <a-plane  class="obj__Earth Frame_Mercury__Earth"
+                      visible="false"
+                      material="src:interface/frame-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Венера -->
+            <a-plane  class="obj__Earth Frame_Venus__Earth"
+                      visible="false"
+                      material="src:interface/frame-venus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Земля -->
+            <a-plane  class="obj__Earth Frame_Earth__Earth"
+                      visible="false"
+                      material="src:interface/frame-earth.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Марс -->
+            <a-plane  class="obj__Earth Frame_Mars__Earth"
+                      visible="false"
+                      material="src:interface/frame-mars.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Юпитер -->
+            <a-plane  class="obj__Earth Frame_Jupiter__Earth"
+                      visible="false"
+                      material="src:interface/frame-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Сатурн -->
+            <a-plane  class="obj__Earth Frame_Saturn__Earth"
+                      visible="false"
+                      material="src:interface/frame-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Уран -->
+            <a-plane  class="obj__Earth Frame_Uranus__Earth"
+                      visible="false"
+                      material="src:interface/frame-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Нептун -->
+            <a-plane  class="obj__Earth Frame_Neptune__Earth"
+                      visible="false"
+                      material="src:interface/frame-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Кнопки назад и настройки -->
+            <a-plane  class="btn_back__Earth"
+                      material="src:interface/btn-back.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-1.5 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_obj__Earth"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+          </a-entity>
+          <!-- Камера -->
+          <a-entity position="0 0 0">
+            <a-camera class="Camera_Rig__Earth" camera="active: false">
+              <a-cursor></a-cursor>
+            </a-camera>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+      <a-entity position="170 0 0" animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 3000">
+        <a-entity gltf-model="#moon"
+                  position="20 0 0"
+                  scale="10 10 10"
+                  animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 6000">
+      </a-entity>
+      </a-entity>
+    </a-entity>
+
+    <!-- Марс -->
+    <a-entity animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 9813">
+      <a-entity position="220 0 0">
+        <a-entity gltf-model="#mars"
+                  scale="7 7 7"
+                  animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 46461">
+        </a-entity>
+        <a-entity class="rig__Mars" position="0 0 10" rotation="0 0 0">
+          <a-entity>
+            <!-- Пол -->
+            <a-box position="0 0 0" scale="2 0.2 2" color="gray"></a-box>
+            <!-- Настройки -->
+            <a-plane  class="Frame_Choose_Mode__Mars"
+                      visible="true"
+                      material="src:interface/frame-mode.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Text__Mars"
+                      material="src:interface/btn-text.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.2 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Audio__Mars"
+                      material="src:interface/btn-audio.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.1 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Выбор объектов -->
+            <a-plane  class="Frame_Choose_Object__Mars"
+                      visible="false"
+                      material="src:interface/frame-object.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_choose_object__Mars"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Sun__Mars"
+                      material="src:interface/btn-sun.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mercury__Mars"
+                      material="src:interface/btn-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Venus__Mars"
+                      material="src:interface/btn-venus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Earth__Mars"
+                      material="src:interface/btn-earth.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mars__Mars"
+                      material="src:interface/btn-mars.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Jupiter__Mars"
+                      material="src:interface/btn-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Saturn__Mars"
+                      material="src:interface/btn-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Uranus__Mars"
+                      material="src:interface/btn-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Neptune__Mars"
+                      material="src:interface/btn-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Above__Mars"
+                      material="src:interface/btn-above.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Side__Mars"
+                      material="src:interface/btn-side.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Angle__Mars"
+                      material="src:interface/btn-angle.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Информация об объекте -->
+            <!-- Солнце -->
+            <a-plane  class="obj__Mars Frame_Sun__Mars"
+                      visible="false"
+                      material="src:interface/frame-sun.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Меркурий -->
+            <a-plane  class="obj__Mars Frame_Mercury__Mars"
+                      visible="false"
+                      material="src:interface/frame-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Венера -->
+            <a-plane  class="obj__Mars Frame_Venus__Mars"
+                      visible="false"
+                      material="src:interface/frame-venus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Земля -->
+            <a-plane  class="obj__Mars Frame_Earth__Mars"
+                      visible="false"
+                      material="src:interface/frame-earth.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Марс -->
+            <a-plane  class="obj__Mars Frame_Mars__Mars"
+                      visible="false"
+                      material="src:interface/frame-mars.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Юпитер -->
+            <a-plane  class="obj__Mars Frame_Jupiter__Mars"
+                      visible="false"
+                      material="src:interface/frame-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Сатурн -->
+            <a-plane  class="obj__Mars Frame_Saturn__Mars"
+                      visible="false"
+                      material="src:interface/frame-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Уран -->
+            <a-plane  class="obj__Mars Frame_Uranus__Mars"
+                      visible="false"
+                      material="src:interface/frame-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Нептун -->
+            <a-plane  class="obj__Mars Frame_Neptune__Mars"
+                      visible="false"
+                      material="src:interface/frame-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Кнопки назад и настройки -->
+            <a-plane  class="btn_back__Mars"
+                      material="src:interface/btn-back.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-1.5 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_obj__Mars"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+          </a-entity>
+          <!-- Камера -->
+          <a-entity position="0 0 0">
+            <a-camera class="Camera_Rig__Mars" camera="active: false">
+              <a-cursor></a-cursor>
+            </a-camera>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+    </a-entity>
+
+    <!-- Юпитер -->
+    <a-entity animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 18117">
+      <a-entity position="270 0 0">
+        <a-entity gltf-model="#jupiter"
+                  scale="1 1 1"
+                  animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 19770">
+        </a-entity>
+        <a-entity class="rig__Jupiter" position="0 0 35" rotation="0 0 0">
+          <a-entity>
+            <!-- Пол -->
+            <a-box position="0 0 0" scale="2 0.2 2" color="gray"></a-box>
+            <!-- Настройки -->
+            <a-plane  class="Frame_Choose_Mode__Jupiter"
+                      visible="true"
+                      material="src:interface/frame-mode.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Text__Jupiter"
+                      material="src:interface/btn-text.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.2 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Audio__Jupiter"
+                      material="src:interface/btn-audio.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.1 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Выбор объектов -->
+            <a-plane  class="Frame_Choose_Object__Jupiter"
+                      visible="false"
+                      material="src:interface/frame-object.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_choose_object__Jupiter"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Sun__Jupiter"
+                      material="src:interface/btn-sun.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mercury__Jupiter"
+                      material="src:interface/btn-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Venus__Jupiter"
+                      material="src:interface/btn-venus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Earth__Jupiter"
+                      material="src:interface/btn-earth.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mars__Jupiter"
+                      material="src:interface/btn-mars.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Jupiter__Jupiter"
+                      material="src:interface/btn-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Saturn__Jupiter"
+                      material="src:interface/btn-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Uranus__Jupiter"
+                      material="src:interface/btn-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Neptune__Jupiter"
+                      material="src:interface/btn-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Above__Jupiter"
+                      material="src:interface/btn-above.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Side__Jupiter"
+                      material="src:interface/btn-side.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Angle__Jupiter"
+                      material="src:interface/btn-angle.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Информация об объекте -->
+            <!-- Солнце -->
+            <a-plane  class="obj__Jupiter Frame_Sun__Jupiter"
+                      visible="false"
+                      material="src:interface/frame-sun.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Меркурий -->
+            <a-plane  class="obj__Jupiter Frame_Mercury__Jupiter"
+                      visible="false"
+                      material="src:interface/frame-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Венера -->
+            <a-plane  class="obj__Jupiter Frame_Venus__Jupiter"
+                      visible="false"
+                      material="src:interface/frame-venus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Земля -->
+            <a-plane  class="obj__Jupiter Frame_Earth__Jupiter"
+                      visible="false"
+                      material="src:interface/frame-earth.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Марс -->
+            <a-plane  class="obj__Jupiter Frame_Mars__Jupiter"
+                      visible="false"
+                      material="src:interface/frame-mars.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Юпитер -->
+            <a-plane  class="obj__Jupiter Frame_Jupiter__Jupiter"
+                      visible="false"
+                      material="src:interface/frame-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Сатурн -->
+            <a-plane  class="obj__Jupiter Frame_Saturn__Jupiter"
+                      visible="false"
+                      material="src:interface/frame-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Уран -->
+            <a-plane  class="obj__Jupiter Frame_Uranus__Jupiter"
+                      visible="false"
+                      material="src:interface/frame-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Нептун -->
+            <a-plane  class="obj__Jupiter Frame_Neptune__Jupiter"
+                      visible="false"
+                      material="src:interface/frame-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Кнопки назад и настройки -->
+            <a-plane  class="btn_back__Jupiter"
+                      material="src:interface/btn-back.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-1.5 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_obj__Jupiter"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+          </a-entity>
+          <!-- Камера -->
+          <a-entity position="0 0 0">
+            <a-camera class="Camera_Rig__Jupiter" camera="active: false">
+              <a-cursor></a-cursor>
+            </a-camera>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+    </a-entity>
+
+    <!-- Сатурн -->
+    <a-entity animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 24437">
+      <a-entity position="330 0 0">
+        <a-entity gltf-model="#saturn" id="model_Saturn"
+                  scale="0.7 0.7 0.7"
+                  animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 20759">
+        </a-entity>
+        <a-entity class="rig__Saturn" position="0 0 30" rotation="0 0 0">
+          <a-entity>
+            <!-- Пол -->
+            <a-box position="0 0 0" scale="2 0.2 2" color="gray"></a-box>
+            <!-- Настройки -->
+            <a-plane  class="Frame_Choose_Mode__Saturn"
+                      visible="true"
+                      material="src:interface/frame-mode.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Text__Saturn"
+                      material="src:interface/btn-text.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.2 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Audio__Saturn"
+                      material="src:interface/btn-audio.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.1 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Выбор объектов -->
+            <a-plane  class="Frame_Choose_Object__Saturn"
+                      visible="false"
+                      material="src:interface/frame-object.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_choose_object__Saturn"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Sun__Saturn"
+                      material="src:interface/btn-sun.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mercury__Saturn"
+                      material="src:interface/btn-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Venus__Saturn"
+                      material="src:interface/btn-venus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Earth__Saturn"
+                      material="src:interface/btn-earth.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mars__Saturn"
+                      material="src:interface/btn-mars.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Jupiter__Saturn"
+                      material="src:interface/btn-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Saturn__Saturn"
+                      material="src:interface/btn-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Uranus__Saturn"
+                      material="src:interface/btn-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Neptune__Saturn"
+                      material="src:interface/btn-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Above__Saturn"
+                      material="src:interface/btn-above.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Side__Saturn"
+                      material="src:interface/btn-side.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Angle__Saturn"
+                      material="src:interface/btn-angle.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Информация об объекте -->
+            <!-- Солнце -->
+            <a-plane  class="obj__Saturn Frame_Sun__Saturn"
+                      visible="false"
+                      material="src:interface/frame-sun.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Меркурий -->
+            <a-plane  class="obj__Saturn Frame_Mercury__Saturn"
+                      visible="false"
+                      material="src:interface/frame-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Венера -->
+            <a-plane  class="obj__Saturn Frame_Venus__Saturn"
+                      visible="false"
+                      material="src:interface/frame-venus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Земля -->
+            <a-plane  class="obj__Saturn Frame_Earth__Saturn"
+                      visible="false"
+                      material="src:interface/frame-earth.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Марс -->
+            <a-plane  class="obj__Saturn Frame_Mars__Saturn"
+                      visible="false"
+                      material="src:interface/frame-mars.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Юпитер -->
+            <a-plane  class="obj__Saturn Frame_Jupiter__Saturn"
+                      visible="false"
+                      material="src:interface/frame-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Сатурн -->
+            <a-plane  class="obj__Saturn Frame_Saturn__Saturn"
+                      visible="false"
+                      material="src:interface/frame-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Уран -->
+            <a-plane  class="obj__Saturn Frame_Uranus__Saturn"
+                      visible="false"
+                      material="src:interface/frame-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Нептун -->
+            <a-plane  class="obj__Saturn Frame_Neptune__Saturn"
+                      visible="false"
+                      material="src:interface/frame-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Кнопки назад и настройки -->
+            <a-plane  class="btn_back__Saturn"
+                      material="src:interface/btn-back.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-1.5 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_obj__Saturn"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+          </a-entity>
+          <!-- Камера -->
+          <a-entity position="0 0 0">
+            <a-camera class="Camera_Rig__Saturn" camera="active: false">
+              <a-cursor></a-cursor>
+            </a-camera>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+    </a-entity>
+
+    <!-- Уран -->
+    <a-entity animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 34772">
+      <a-entity position="400 0 0">
+        <a-entity gltf-model="#uranus"
+                  scale="1 1 1"
+                  animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 33610">
+        </a-entity>
+        <a-entity class="rig__Uranus" position="0 0 20" rotation="0 0 0">
+          <a-entity>
+            <!-- Пол -->
+            <a-box position="0 0 0" scale="2 0.2 2" color="gray"></a-box>
+            <!-- Настройки -->
+            <a-plane  class="Frame_Choose_Mode__Uranus"
+                      visible="true"
+                      material="src:interface/frame-mode.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Text__Uranus"
+                      material="src:interface/btn-text.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.2 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Audio__Uranus"
+                      material="src:interface/btn-audio.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.1 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Выбор объектов -->
+            <a-plane  class="Frame_Choose_Object__Uranus"
+                      visible="false"
+                      material="src:interface/frame-object.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_choose_object__Uranus"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Sun__Uranus"
+                      material="src:interface/btn-sun.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mercury__Uranus"
+                      material="src:interface/btn-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Venus__Uranus"
+                      material="src:interface/btn-venus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Earth__Uranus"
+                      material="src:interface/btn-earth.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mars__Uranus"
+                      material="src:interface/btn-mars.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Jupiter__Uranus"
+                      material="src:interface/btn-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Saturn__Uranus"
+                      material="src:interface/btn-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Uranus__Uranus"
+                      material="src:interface/btn-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Neptune__Uranus"
+                      material="src:interface/btn-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Above__Uranus"
+                      material="src:interface/btn-above.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Side__Uranus"
+                      material="src:interface/btn-side.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Angle__Uranus"
+                      material="src:interface/btn-angle.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Информация об объекте -->
+            <!-- Солнце -->
+            <a-plane  class="obj__Uranus Frame_Sun__Uranus"
+                      visible="false"
+                      material="src:interface/frame-sun.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Меркурий -->
+            <a-plane  class="obj__Uranus Frame_Mercury__Uranus"
+                      visible="false"
+                      material="src:interface/frame-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Венера -->
+            <a-plane  class="obj__Uranus Frame_Venus__Uranus"
+                      visible="false"
+                      material="src:interface/frame-venus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Земля -->
+            <a-plane  class="obj__Uranus Frame_Earth__Uranus"
+                      visible="false"
+                      material="src:interface/frame-earth.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Марс -->
+            <a-plane  class="obj__Uranus Frame_Mars__Uranus"
+                      visible="false"
+                      material="src:interface/frame-mars.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Юпитер -->
+            <a-plane  class="obj__Uranus Frame_Jupiter__Uranus"
+                      visible="false"
+                      material="src:interface/frame-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Сатурн -->
+            <a-plane  class="obj__Uranus Frame_Saturn__Uranus"
+                      visible="false"
+                      material="src:interface/frame-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Уран -->
+            <a-plane  class="obj__Uranus Frame_Uranus__Uranus"
+                      visible="false"
+                      material="src:interface/frame-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Нептун -->
+            <a-plane  class="obj__Uranus Frame_Neptune__Uranus"
+                      visible="false"
+                      material="src:interface/frame-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Кнопки назад и настройки -->
+            <a-plane  class="btn_back__Uranus"
+                      material="src:interface/btn-back.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-1.5 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_obj__Uranus"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+          </a-entity>
+          <!-- Камера -->
+          <a-entity position="0 0 0">
+            <a-camera class="Camera_Rig__Uranus" camera="active: false">
+              <a-cursor></a-cursor>
+            </a-camera>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+    </a-entity>
+
+    <!-- Нептун -->
+    <a-entity animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 43609">
+      <a-entity position="480 0 0">
+        <a-entity gltf-model="#neptune"
+                  scale="1 1 1"
+                  animation="property: rotation.y; to: 360; loop: true; easing: linear; dur: 31633">
+        </a-entity>
+        <a-entity class="rig__Neptune" position="0 0 15" rotation="0 0 0">
+          <a-entity>
+            <!-- Пол -->
+            <a-box position="0 0 0" scale="2 0.2 2" color="gray"></a-box>
+            <!-- Настройки -->
+            <a-plane  class="Frame_Choose_Mode__Neptune"
+                      visible="true"
+                      material="src:interface/frame-mode.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Text__Neptune"
+                      material="src:interface/btn-text.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.2 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Audio__Neptune"
+                      material="src:interface/btn-audio.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.1 1.25 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Выбор объектов -->
+            <a-plane  class="Frame_Choose_Object__Neptune"
+                      visible="false"
+                      material="src:interface/frame-object.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_choose_object__Neptune"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Sun__Neptune"
+                      material="src:interface/btn-sun.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mercury__Neptune"
+                      material="src:interface/btn-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Venus__Neptune"
+                      material="src:interface/btn-venus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 2.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Earth__Neptune"
+                      material="src:interface/btn-earth.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Mars__Neptune"
+                      material="src:interface/btn-mars.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Jupiter__Neptune"
+                      material="src:interface/btn-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.85 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Saturn__Neptune"
+                      material="src:interface/btn-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Uranus__Neptune"
+                      material="src:interface/btn-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Neptune__Neptune"
+                      material="src:interface/btn-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 1.35 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Above__Neptune"
+                      material="src:interface/btn-above.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="1.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Side__Neptune"
+                      material="src:interface/btn-side.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="0.5 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="Button_Angle__Neptune"
+                      material="src:interface/btn-angle.png; transparent:true; alphaTest:0.1;"
+                      width="1"
+                      height="0.4"
+                      position="-0.6 0.55 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Информация об объекте -->
+            <!-- Солнце -->
+            <a-plane  class="obj__Neptune Frame_Sun__Neptune"
+                      visible="false"
+                      material="src:interface/frame-sun.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Меркурий -->
+            <a-plane  class="obj__Neptune Frame_Mercury__Neptune"
+                      visible="false"
+                      material="src:interface/frame-mercury.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Венера -->
+            <a-plane  class="obj__Neptune Frame_Venus__Neptune"
+                      visible="false"
+                      material="src:interface/frame-venus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Земля -->
+            <a-plane  class="obj__Neptune Frame_Earth__Neptune"
+                      visible="false"
+                      material="src:interface/frame-earth.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Марс -->
+            <a-plane  class="obj__Neptune Frame_Mars__Neptune"
+                      visible="false"
+                      material="src:interface/frame-mars.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Юпитер -->
+            <a-plane  class="obj__Neptune Frame_Jupiter__Neptune"
+                      visible="false"
+                      material="src:interface/frame-jupiter.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Сатурн -->
+            <a-plane  class="obj__Neptune Frame_Saturn__Neptune"
+                      visible="false"
+                      material="src:interface/frame-saturn.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Уран -->
+            <a-plane  class="obj__Neptune Frame_Uranus__Neptune"
+                      visible="false"
+                      material="src:interface/frame-uranus.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Нептун -->
+            <a-plane  class="obj__Neptune Frame_Neptune__Neptune"
+                      visible="false"
+                      material="src:interface/frame-neptune.png; transparent:true; alphaTest:0.1;"
+                      width="5.3"
+                      height="3"
+                      position="0 1.6 2"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <!-- Кнопки назад и настройки -->
+            <a-plane  class="btn_back__Neptune"
+                      material="src:interface/btn-back.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-1.5 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+            <a-plane  class="btn_setting_obj__Neptune"
+                      material="src:interface/btn-setting.png; transparent:true; alphaTest:0.1;"
+                      width="0.4"
+                      height="0.4"
+                      position="-2 2.7 1.99"
+                      rotation="-180 0 -180">
+            </a-plane>
+          </a-entity>
+          <!-- Камера -->
+          <a-entity position="0 0 0">
+            <a-camera class="Camera_Rig__Neptune" camera="active: false">
+              <a-cursor></a-cursor>
+            </a-camera>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+    </a-entity>
+
+    <a-sky color="#000"></a-sky>
+  </a-scene>
+  <script src="script/script.js"></script>
+</body>
+</html>
+<!--
+Earth
+Mars
+Jupiter
+Saturn
+Uranus
+Neptune
+ -->
